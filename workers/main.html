@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Session {{sessionId}}</title>
+    <title>API Debugger</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -29,12 +29,26 @@
         p {
             color: #666;
         }
+        a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 15px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+        }
+        a:hover {
+            background-color: #0056b3;
+        }
     </style>
 </head>
 <body>
     <div class="container">
-        <h1>No data captured yet for {{sessionId}}</h1>
-        <p>To test an API, send requests to <code>/{{sessionId}}/test</code>. Then refresh the page</p>
+        <h1>Welcome to the API Debugger</h1>
+        <p>To test an API, send requests to <code>/YOUR_SESSION/test</code>.</p>
+        <p>View request details at <code>/YOUR_SESSION</code>.</p>
+        <a href="{{randomSession}}">Start Debugging</a>
     </div>
 </body>
 </html>
