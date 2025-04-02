@@ -84,6 +84,6 @@ async function cleanupOldSessions(env) {
 
 function homePage() {
     const randomSession = Math.random().toString(16).slice(2, 10).toUpperCase();
-    let mainHTML = mainHTML.replace(/{{randomSession}}/g, randomSession);
-    return mainHTML;
+    let HTML = mainHTML.replace(/{{randomSession}}/g, randomSession);
+    return HTML;
 }
