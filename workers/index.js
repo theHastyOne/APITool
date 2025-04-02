@@ -1,5 +1,6 @@
 import mainHTML from "./main.html";
 import resultHTML from "./result.html";
+import noresultHTML from "./noresult.html";
 export default {
     async fetch(request, env) {
         const url = new URL(request.url);
@@ -45,7 +46,7 @@ export default {
                     timestamp = excluded.timestamp
             `).bind(sessionId, request.method, JSON.stringify(Object.fromEntries(request.headers)), body, JSON.stringify(queryParams), timestamp).run();
 
-            return new Response("Captured request.", { status: 200 });
+            return new Response("Captured request. Please visit ${request.url}", { status: 200 });
         }
 
         return new Response("Not found", { status: 404 });
@@ -57,7 +58,8 @@ async function renderSession(sessionId, env) {
 
     const { results } = await env.DB.prepare("SELECT * FROM session WHERE id = ?").bind(sessionId).all();
     if (!results.length) {
-        return `<html><body><h1>No data captured yet for ${sessionId}</h1></body></html>`;
+        let HTML = noresultHTML.replace(/{{sessionId}}/g, sessionId);
+        return HTML;
     }
     const session = results[0];
     let headersJSON = JSON.stringify(JSON.parse(session.headers), null, 2)
