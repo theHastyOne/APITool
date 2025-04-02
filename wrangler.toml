@@ -6,3 +6,6 @@ main = "workers/index.js"
 binding = "DB"
 database_name = "api-helper"
 database_id = "8ff9889f-27d0-4476-bcb2-007a82e15cd1"
+
+route = "apihelp.hasty.systems/*"
+zone_id = "hasty.systems"
