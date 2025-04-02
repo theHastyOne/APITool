@@ -33,7 +33,7 @@ export default {
             const timestamp = Date.now();
 
             await env.DB.prepare(`
-                INSERT INTO sessions (id, method, headers, body, query_params, timestamp) 
+                INSERT INTO session (id, method, headers, body, query_params, timestamp) 
                 VALUES (?, ?, ?, ?, ?, ?)
                 ON CONFLICT(id) DO UPDATE SET 
                     method = excluded.method, 
@@ -53,7 +53,7 @@ export default {
 async function renderSession(sessionId, env) {
     await cleanupOldSessions(env); // Auto-delete expired sessions
 
-    const { results } = await env.DB.prepare("SELECT * FROM sessions WHERE id = ?").bind(sessionId).all();
+    const { results } = await env.DB.prepare("SELECT * FROM session WHERE id = ?").bind(sessionId).all();
     if (!results.length) {
         return `<html><body><h1>No data captured yet for ${sessionId}</h1></body></html>`;
     }
