@@ -60,8 +60,8 @@ async function renderSession(sessionId, env) {
         return `<html><body><h1>No data captured yet for ${sessionId}</h1></body></html>`;
     }
     const session = results[0];
-    headersJSON = JSON.stringify(JSON.parse(session.headers), null, 2)
-    paramsJSON = JSON.stringify(JSON.parse(session.query_params), null, 2)
+    let headersJSON = JSON.stringify(JSON.parse(session.headers), null, 2)
+    let paramsJSON = JSON.stringify(JSON.parse(session.query_params), null, 2)
     let HTML = resultHTML.replace(/{{sessionId}}/g, sessionId)
                          .replace(/{{session.method}}/g, session.method)
                          .replace(/{{headersJSON}}/g, headersJSON)
