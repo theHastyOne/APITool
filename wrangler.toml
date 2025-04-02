@@ -1,0 +1,3 @@
+name = "api-helper"
+compatibility_date = "2025-02-18"
+main = "workers/index.js"
