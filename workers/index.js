@@ -78,7 +78,7 @@ async function renderSession(sessionId, env) {
 
 async function cleanupOldSessions(env) {
     const expiryTime = Date.now() - 600000; // 10 minutes ago
-    await env.DB.prepare("DELETE FROM sessions WHERE timestamp < ?").bind(expiryTime).run();
+    await env.DB.prepare("DELETE FROM session WHERE timestamp < ?").bind(expiryTime).run();
 }
 
 function homePage() {
