@@ -1,3 +1,7 @@
 name = "api-helper"
 compatibility_date = "2025-02-18"
 main = "workers/index.js"
+
+[[d1_databases]]
+binding = "DB"
+database_name = "api-helper"
