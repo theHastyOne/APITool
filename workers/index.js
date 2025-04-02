@@ -46,7 +46,8 @@ export default {
                     timestamp = excluded.timestamp
             `).bind(sessionId, request.method, JSON.stringify(Object.fromEntries(request.headers)), body, JSON.stringify(queryParams), timestamp).run();
 
-            return new Response(`Captured request. Please visit ${request.url}`, { status: 200 });
+            const trimmedUrl = request.url.substring(0, request.url.lastIndexOf('/'));
+            return new Response(`Captured request. Please visit ${trimmedUrl}`, { status: 200 });
         }
 
         return new Response("Not found", { status: 404 });
